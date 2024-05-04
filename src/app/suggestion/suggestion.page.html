@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Suggestion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">suggestion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Radio buttons to pick genre -->
+  <ion-list>
+    <p>Choose a genre for suggestions!</p>
+    <!-- Two way data binding -->
+    <ion-radio-group [(ngModel)]="genre" (ionChange)="setGenre($event.detail.value)">
+      <ion-item>
+        <ion-label>Comedy</ion-label>
+        <ion-radio value="comedy"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Action</ion-label>
+        <ion-radio value="action"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nostalgic</ion-label>
+        <ion-radio value="nostalgic"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Kids</ion-label>
+        <ion-radio value="kids"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Suggested Movies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Display movies along with IMDB link -->
+  <ion-list>
+    <ion-item *ngFor="let movie of suggestedMovies">
+      <ion-label>{{ movie.title }}</ion-label>
+      <ion-label>{{ movie.year }}</ion-label>
+      <ion-button (click)="openIMDB(movie.imdbID)">View on IMDb</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,44 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <!--Buttons to link between pages-->
+  <ion-button color="medium" [routerLink]="['/popular']">Popular Page</ion-button>
+  <ion-button color="medium" [routerLink]="['/search']">Search Page</ion-button>
+  <ion-button color="medium" [routerLink]="['/suggestion']">Suggestions by genre</ion-button>
+   
+  <h2>What to watch tonight</h2>
+  
+  <!--Card to display the suggested movie-->
+  <ion-card>
+   <ion-card-header>
+      <ion-card-title>{{ selectedMovie.title }}</ion-card-title>
+      <ion-card-subtitle>{{ selectedMovie.year }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <!--Button to suggest random movie from the array-->
+  <ion-button color="success" (click)="selectRandomMovie()">Get Another Suggestion</ion-button>
+
+  </ion-content>
+
+<!--     
+  I wanted to use this tab bar, 
+  but then the buttons weren't clickable anymore...
+
+  ion-tabs>
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home" [routerLink]="['/']">
+      Home
+    </ion-tab-button>
+    <ion-tab-button tab="popular" [routerLink]="['/popular']">
+      Popular
+    </ion-tab-button>
+    <ion-tab-button tab="suggestion" [routerLink]="['/suggestion']">
+      Suggested
+    </ion-tab-button>
+    <ion-tab-button tab="search" [routerLink]="['/search']">
+      Search
+    </ion-tab-button>
+  </ion-tab-bar> 
+</ion-tabs> -->

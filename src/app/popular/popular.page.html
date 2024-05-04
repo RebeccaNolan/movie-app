@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Top 10 Movies of 2024</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">popular</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!--Display list of movies-->
+  <ion-list>
+    <!-- ngfor to iterate over each observable in movies -->
+    <ion-card *ngFor="let movieObs of movies">
+      <ng-container *ngIf="movieObs | async as movie">
+        <!--Ensures that contents are only rendered if data is returned-->
+        <img [src]="movie.Poster" alt="Movie poster for {{ movie.Title }}">
+        <ion-card-header>
+          <ion-card-title>{{ movie.Title }}</ion-card-title>
+          <ion-card-subtitle>{{ movie.Year }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <!-- Link to IMDb page -->
+          <ion-button (click)="openIMDB(movie.imdbID)">View on IMDb</ion-button>
+        </ion-card-content>
+      </ng-container>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

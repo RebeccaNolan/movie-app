@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Search</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">search</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Search Bar -->
+  <br>
+<ion-searchbar (ionChange)="searchForMovie($event)"></ion-searchbar>
+
+
+<!--card to display movies-->
+  <ion-card *ngFor="let movie of movies">
+    <img [src]="movie.Poster" />
+    <ion-card-header>
+      <ion-card-title>{{movie.Title}}</ion-card-title>
+      <ion-card-subtitle>{{movie.Year}}</ion-card-subtitle>
+    </ion-card-header>
+
+ <ion-card-content>
+    <!--Show details button-->
+    <ion-button (click)="toggleDetails(movie)">Show Details</ion-button>
+    <!-- if clicked shows details or hides them -->
+    <div *ngIf="movie.showDetails">
+      <p><strong>Director:</strong> {{ movie.Director }}</p>
+      <p><strong>Plot:</strong> {{ movie.Plot }}</p>
+    </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
